@@ -18,7 +18,7 @@ make database dump
  sh database/db_dump.sh
 ```
 
-run app
+# Run app
 
 ```bash
 
