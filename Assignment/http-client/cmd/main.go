@@ -30,9 +30,9 @@ func main() {
 	defer db.Close()
 
 	// Redis setup
-	// redisAddr := os.Getenv("REDIS_ADDR")
+	redisAddr := os.Getenv("REDIS_ADDR")
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     redisAddr,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})

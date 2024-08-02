@@ -31,3 +31,9 @@ docker-compose down -v
 go run Assignment/http-client/main.go
 
 ```
+
+## check port 8080 exists
+
+```bash
+lsof -i :8080
+```
