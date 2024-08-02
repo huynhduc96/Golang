@@ -18,6 +18,12 @@ make database dump
  sh database/db_dump.sh
 ```
 
+destroy
+
+```bash
+docker-compose down -v
+```
+
 # Run app
 
 ```bash
