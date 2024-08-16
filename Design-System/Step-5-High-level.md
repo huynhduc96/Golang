@@ -2,4 +2,4 @@
 
 ## First Stage
 
-![System-Design](/image/hightlevel.png)
+![System-Design](./image/hightlevel.png)

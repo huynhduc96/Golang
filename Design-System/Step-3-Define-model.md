@@ -1,3 +1,3 @@
 # Step 3 Define Model
 
-![System-model](/image/model.png)
+![System-model](./image/model.png)
