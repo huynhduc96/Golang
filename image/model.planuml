@@ -1,0 +1,51 @@
+@startuml
+class User {
+  Number id(pk)
+  String name
+  String username
+  String password
+  String email
+}
+
+class Post {
+   Number id(pk)
+   Number user_id(fk)
+   String content
+   String image_url
+   Date   created_at
+   Date   updated_at 
+   Bool   visible
+}
+
+class Comment {
+   Number id(pk)
+   Number user_id(fk)
+   Number post_id(fk)
+   String content
+   Date   created_at
+}
+
+class Like {
+   Number id(pk)
+   Number user_id(fk)
+   Number post_id(fk)
+   Date   created_at
+}
+
+Class Follow {
+  Number id(pk)
+  Number follower_user_id(fk)
+  Number user_id(fk)
+}
+
+Post "many" }-- "1" User
+Comment "many" }-- "1" User
+Like "many" }-- "1" User
+User "many" }-- "1" Follow
+Follow "many" }-- "1" User
+
+Comment "many" }-- "1" Post
+Like "many" }-- "1" Post
+
+
+@enduml
