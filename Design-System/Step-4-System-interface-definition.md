@@ -8,23 +8,23 @@
 
 - User Action: Post, Comment on Post, Follow/Unfollow other user. -->
 
-### Account
+### User
 
-- Sign up: **POST** `v1/api/account`
+- Sign up: **POST** `v1/api/user`
 
-  Body : {Name, Username, Password, Email}
+  Body : {Username, Password, Email, firstName, lastName, dob}
 
   Response : {Message}
 
-- Login : **POST** `v1/api/account/login`
+- Login : **POST** `v1/api/user/login`
 
   Body : {Username, Password}
 
   Response : {Message}
 
-- Edit Profile : **PUT** `v1/api/account`
+- Edit Profile : **PUT** `v1/api/user`
 
-  Body : {Name, Password, Email}
+  Body : {firstName, lastName, Password, Email}
 
   Response : {Message}
 
@@ -74,11 +74,11 @@
 
 ### Comment
 
-- View Comments : **GET** `v1/api/comments/post_id`
+- View Comments : **GET** `v1/posts/:post_id/comments`
 
   Response : {Comment List}
 
-- Create Comment : **POST** `v1/api/comments`
+- Create Comment : **POST** `v1/posts/:post_id/comments`
 
   Body : {Post ID, Content}
 
@@ -92,7 +92,7 @@
 
 - Create Like/Unlike : **POST** `v1/api/likes`
 
-  Body : {Post ID, User ID}
+  Body : {Post ID}
 
 ### Newsfeed
 
