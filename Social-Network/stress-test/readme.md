@@ -62,7 +62,7 @@ Transfer/sec:      4.54MB
 
 ```
 
-### Next test with runs a benchmark for 10 seconds, using 1 threads, and keeping 1 HTTP connections open.
+### Next test with 30 seconds, using 12 threads, and keeping 400 HTTP connections open.
 
 ```bash
 wrk http://127.0.0.1:8080/v1/newsfeeds -s ./stress-test/api-newfeed.lua --latency -t12 -c400 -d30s
