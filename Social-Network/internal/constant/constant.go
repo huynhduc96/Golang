@@ -9,4 +9,5 @@ const (
 	SaltSize        = 16
 	DefaultBucket   = "images"
 	ImageURLMaxLive = time.Minute * 30
+	TtlSeed         = time.Minute * 120
 )
