@@ -19,6 +19,8 @@ DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `address` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -26,7 +28,36 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1,'Marry','London'),(2,'Bob','Hanoi'),(3,'Alice','New York'),(4,'John','Paris'),(5,'Jane','Tokyo'),(6,'David','Sydney'),(7,'Emily','Berlin'),(8,'Michael','Rome'),(9,'Sophia','Los Angeles'),(10,'William','San Francisco'),(11,'Olivia','Chicago'),(12,'Ethan','Toronto'),(13,'Ava','Dubai'),(14,'Noah','Hong Kong'),(15,'Isabella','Madrid'),(16,'Liam','Seoul'),(17,'Mia','Mumbai'),(18,'Jacob','Istanbul'),(19,'Charlotte','Singapore'),(20,'Mason','Bangkok'),(21,'Amelia','Amsterdam'),(22,'Aiden','Melbourne'),(23,'Harper','Rio de Janeiro'),(24,'Evelyn','Moscow'),(25,'Benjamin','Cairo'),(26,'Abigail','Buenos Aires'),(27,'Lucas','Kuala Lumpur'),(28,'Sofia','Cape Town'),(29,'Elijah','Mexico City'),(30,'Scarlett','Jakarta');
+INSERT INTO `User` VALUES (1,'Marry','marry','123456','London'),
+(2,'Bob','bob','123456','Hanoi'),
+(3,'Alice','alice','123456','New York'),
+(4,'John','john','123456','Paris'),
+(5,'Jane','jane','123456','Tokyo'),
+(6,'David','david','123456','Sydney'),
+(7,'Emily','emily','123456','Berlin'),
+(8,'Michael','michael','123456','Rome'),
+(9,'Sophia','sophia','123456','Los Angeles'),
+(10,'William','william','123456','San Francisco'),
+(11,'Olivia','olivia','123456','Chicago'),
+(12,'Ethan','ethan','123456','Toronto'),
+(13,'Ava','ava','123456','Dubai'),
+(14,'Noah','noah','123456','Hong Kong'),
+(15,'Isabella','isabella','123456','Madrid'),
+(16,'Liam','liam','123456','Seoul'),
+(17,'Mia','mia','123456','Mumbai'),
+(18,'Jacob','jacob','123456','Istanbul'),
+(19,'Charlotte','charlotte','123456','Singapore'),
+(20,'Mason','mason','123456','Bangkok'),
+(21,'Amelia','amelia','123456','Amsterdam'),
+(22,'Aiden','aiden','123456','Melbourne'),
+(23,'Harper','harper','123456','Rio de Janeiro'),
+(24,'Evelyn','evelyn','123456','Moscow'),
+(25,'Benjamin','benjamin','123456','Cairo'),
+(26,'Abigail','abigail','123456','Buenos Aires'),
+(27,'Lucas','lucas','123456','Kuala Lumpur'),
+(28,'Sofia','sofia','123456','Cape Town'),
+(29,'Elijah','elijah','123456','Mexico City'),
+(30,'Scarlett','scarlett','123456','Jakarta');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

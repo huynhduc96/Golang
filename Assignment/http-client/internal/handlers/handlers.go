@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"database/Assignment/http-client/internal/constant"
 	"encoding/json"
 	"net/http"
 )
@@ -17,6 +18,17 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 	w.Write(response)
+}
+
+// respondWithJSON sends a JSON response
+func respondWithCookie(w http.ResponseWriter, name, value string) {
+	cookie := &http.Cookie{
+		Name:   name,
+		Value:  value,
+		Path:   "/",
+		MaxAge: constant.REDIS_TTL, // Cookie expiration in seconds
+	}
+	http.SetCookie(w, cookie)
 }
 
 // respondWithError sends an error response

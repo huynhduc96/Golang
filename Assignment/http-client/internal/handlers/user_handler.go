@@ -23,6 +23,76 @@ func NewUserHandler(userRepo repository.UserRepository) *UserHandler {
 	}
 }
 
+// Login handles POST requests to /login
+func (h *UserHandler) LoginUsers(w http.ResponseWriter, r *http.Request) {
+	var userLogin models.UserLogin
+	log.Println("Handling user login request...") // Basic logging
+	err := json.NewDecoder(r.Body).Decode(&userLogin)
+
+	sessionID, err := h.userRepo.LoginUser(userLogin)
+
+	if err != nil {
+		respondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	respondWithCookie(w, "sessionID", *sessionID)
+}
+
+func (h *UserHandler) Ping(w http.ResponseWriter, r *http.Request) {
+	log.Println("Handling user pings request...") // Basic logging
+	sessionCookie, err := r.Cookie("sessionID")
+
+	if err != nil {
+		respondWithError(w, http.StatusUnauthorized, "Missing session cookie")
+		return
+	}
+
+	result, err := h.userRepo.Ping(sessionCookie.Value)
+
+	if err != nil {
+		respondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	respondWithJSON(w, http.StatusOK, result)
+}
+
+func (h *UserHandler) TopPing(w http.ResponseWriter, r *http.Request) {
+	log.Println("Handling user TopPing request...") // Basic logging
+	sessionCookie, err := r.Cookie("sessionID")
+
+	if err != nil {
+		respondWithError(w, http.StatusUnauthorized, "Missing session cookie")
+		return
+	}
+
+	result, err := h.userRepo.TopPing(sessionCookie.Value)
+
+	if err != nil {
+		respondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	respondWithJSON(w, http.StatusOK, result)
+}
+
+func (h *UserHandler) Count(w http.ResponseWriter, r *http.Request) {
+	log.Println("Handling user Count request...") // Basic logging
+	sessionCookie, err := r.Cookie("sessionID")
+
+	if err != nil {
+		respondWithError(w, http.StatusUnauthorized, "Missing session cookie")
+		return
+	}
+
+	result, err := h.userRepo.Count(sessionCookie.Value)
+
+	if err != nil {
+		respondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	respondWithJSON(w, http.StatusOK, result)
+}
+
 // GetUsers handles GET requests to /users
 func (h *UserHandler) GetUsers(w http.ResponseWriter, r *http.Request) {
 	log.Println("Handling user request...") // Basic logging
@@ -126,6 +196,7 @@ func (h *UserHandler) DeleteUser(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, http.StatusOK, map[string]string{"message": "User deleted"})
 }
 
+// Search User handles GET requests to /users/search
 func (h *UserHandler) SearchUsersByAddress(w http.ResponseWriter, r *http.Request) {
 	log.Println("Handling SearchUsersByAddress request...") // Basic logging
 
